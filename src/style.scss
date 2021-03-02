@@ -1,0 +1,309 @@
+$bgcolor: #000000;
+$bgcolorDark: #343a40;
+$textColor: #ffffff;
+$textColorGreen: green;
+$movieCardBorder: #2a2a2a;
+// Small tablets and large smartphones (landscape view)
+$screen-sm-min: 576px;
+
+// Small tablets (portrait view)
+$screen-md-min: 768px;
+
+// Tablets and small desktops
+$screen-lg-min: 992px;
+
+// Large tablets and desktops
+$screen-xl-min: 1200px;
+
+
+// Small devices
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+      @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+      @content;
+  }
+}
+
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+      @content;
+  }
+}
+
+// Extra large devices
+@mixin xl {
+  @media (max-width: #{$screen-xl-min}) {
+      @content;
+  }
+}
+
+body {
+  background-color: $bgcolor !important;
+}
+
+.root{
+  width: 100%;
+}
+
+.searchbar {
+  background-color: transparent;
+  border: 0;
+  border-bottom: 2px solid $movieCardBorder;
+  &:focus {
+    background-color: transparent;
+    border: 0;
+    border-bottom: 2px solid $movieCardBorder;
+  }
+}
+
+button {
+  border: none !important;
+  border-radius: 0px !important;
+}
+
+.movie-list-header {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  h2 {
+    color: $textColor
+  }
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: row; 
+  color: $textColor;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+
+  @include sm {
+    flex-direction: column;
+    align-items: flex-start;
+    height: 160px;
+  }
+
+  .movie-card-left {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    align-items: center;
+
+    @include sm {
+      width: 100%;
+    }
+
+    img {
+      height: 100px;
+      width: 70px
+    }
+
+    p {
+      margin: 0;
+      margin-left: 10px;
+    }
+
+   
+
+  }
+
+  .movie-card-right {
+    width: 50%;
+    display: flex;
+
+    @include sm {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      justify-content: space-around;
+      align-items: center;
+      width: 100%;
+      background-color: #2a2a2a;
+      height: 50px;
+      padding: 5px;
+    }
+
+    .movie-rating {
+      border: 1px solid #ffffff;
+      padding: 0px 5px 0px 5px;
+    }
+    span + span {
+      margin-left: 50px;
+    }
+  }
+
+  + .movie-card {
+    border-top: 0.6px solid $movieCardBorder;
+  }
+
+  &:hover {
+    background-color: $movieCardBorder;
+    cursor: pointer;
+  }
+
+}
+
+.app-dialog {
+  border-radius: 0px !important;
+  background-color: transparent;
+  .modal-header {
+    border: none;
+  }
+  button.close{
+    color: $textColor;
+  }
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: row;
+  background-color: $bgcolor;
+  @include sm {
+    flex-direction: column;
+  }
+
+  .image-container {
+    height: 100%;
+    @include sm {
+      img {
+        width: 100%;
+      }
+    }
+  }
+
+  .details-container {
+    padding: 20px;
+    h3 {
+      color: $textColor;
+      font-size: 32px;
+    }
+    h5 {
+      color: $textColorGreen;
+      font-size: 18px;
+    }
+    p {
+      color: $textColor;
+    }
+    p.genres {
+      color: $textColorGreen;
+      font-size: 20px;
+      margin-bottom: 5px;
+      margin-top: 20px;
+    }
+
+    .movie-stats {
+      display: flex;
+      flex-direction: row;
+      .movie-stats-item {
+        width: 50%;
+
+        .title {
+          color: $textColor;
+          margin: 0px;
+        }
+
+        .value {
+          color: $textColorGreen;
+          font-size: 20px;
+        }
+      }
+    }
+  }
+}
+
+.add-movie-dialog {
+  border-radius: 0px !important;
+
+}
+
+button + button {
+  margin-left: 10px !important;
+}
+
+.blurred-bg-modal {
+  background: blue;
+  color: white;
+  -webkit-filter: blur(5px) grayscale(90%);
+  filter: blur(5px) grayscale(90%);
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  z-index: 90;
+}
+
+.search-input-container {
+  width: 400px;
+  div>.wrapper {
+    background-color: $bgcolorDark;
+    border-radius: 0px;
+    border: 0;
+    border-bottom: 2px solid $bgcolor;
+    div{
+      color: #ffffff !important;
+      
+      input {
+        color: #ffffff !important;
+      }
+    }
+    div:nth-child(2) {
+      ul{
+        li {
+          height: 50px !important;
+          &:hover {
+            background-color: #7e7e7e !important;
+          }
+        }
+        
+      }
+      
+    }
+  }
+}
+
+.loading-card {
+  color: $textColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #2a2a2a;
+  p {
+    font-size: 20px;
+    margin: 0px;
+  }
+}
+
+.empty-card {
+  color: $textColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  background-color: #2a2a2a;
+  p {
+    font-size: 20px;
+    margin: 0px;
+  }
+}
+
+.error-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  border-radius: 0px;
+}
+
+
