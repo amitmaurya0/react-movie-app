@@ -55,7 +55,7 @@ const MovieSearch = () => {
          placeholder="Search Movie Title..."
        />
     </div>
-    <MovieDetailsModal showModal={showDetailsModal} movieId={1} onClose={hideMovieDetailsModal} />
+    <MovieDetailsModal showModal={showDetailsModal} movieId={movieId} onClose={hideMovieDetailsModal} />
 
   </>
   );
